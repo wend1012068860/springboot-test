@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍主页</title>
+</head>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+<body>
+
+<div>
+    <nav class="navbar-default navbar-fixed-topcd">
+        <div style="text-align: center">
+            <h3 class="navbar-tex">书籍推荐</h3>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+
+    <div th:each="book: ${bookList}">
+
+        <div class="container">
+            <div class="row">
+                <div>
+                    <img th:src="${book.pic}" width="200px" height="250px" style="float: left"/>
+                    <div style="margin-left:300px; margin-top: 50px">
+                        <br/><br/>
+                        <h2><a th:href="@{/book/{bookId}(bookId=${book.id})}"
+                               th:text="${book.name}"></a></h2>
+                        <h5>作者:</h5>
+                        <h5 th:text="${book.author}"></h5>
+                        <p>简介:</p>
+                        <p th:text="${book.introduce}"></p>
+                    </div>
+                    <div>
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
