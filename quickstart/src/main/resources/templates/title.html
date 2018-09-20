@@ -1,0 +1,130 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <style>
+        .font{
+            font-size: 20px;
+            letter-spacing: 6px;
+        }
+        .words{font-size: 10px;
+            font-weight: bold;
+            color: lawngreen;
+            position: absolute;
+            top:0%;
+            left:10%;}
+        .name{
+            margin-left: 100px;
+            margin-top: -30px;
+        }
+        .like{
+            font-size: 12px;
+            font-weight: bold;
+            color: hotpink;
+            letter-spacing: 10px;
+            position: absolute;
+            bottom:30%;
+            right: 40%;
+        }
+        .avatar{
+            width: 50px;
+            height:50px;
+        }
+        .daxiao{
+            width: 130px;
+            height:100px;
+        }
+
+    </style>
+</head>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+<body>
+<div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img alt="Brand" src="logo.png">
+            </div>
+            <div class="navbar-right">
+                <button class="btn btn-success">登录</button>
+            </div>
+            <h3 class="navbar-text" style="margin-left: 450px">#应用推荐</h3>
+        </div>
+    </nav>
+</div>
+<div>
+    <br/><br/><br/>
+</div>
+
+<div>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="font"><a href="#">正版软件</a></li>
+                <li class="font"><a href="#">付费栏目</a></li>
+                <li class="font"><a href="#">Matrix</a></li>
+                <li class="font"><a href="#">专题广场</a></li>
+                <li class="font"><a href="#">热门文章</a></li>
+                <li class="font"><a href="#">应用推荐</a></li>
+                <li class="font"><a href="#">生活方式</a></li>
+                <li class="font"><a href="#">新玩意</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container"><br/>
+        <div class="col-lg-8" >
+            <div th:each="hot:${hotList}">
+                <div class="container">
+                    <div>
+                        <div>
+                            <img th:src="${avatar.ava}" class="img-circle avatar"/>
+                            <p th:text="${avatar.name}" class="name"/>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-lg-6">
+                            <div>
+                                <div>
+                                    <h3 th:text="${hot.name}"/></h3>
+                                </div>
+                                <div>
+                                    <p th:text="${hot.like}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <img th:src="${hot.pic}" class="daxiao"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <br/><br/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    <div class="col-lg-4" >
+        <div th:each="title:${titleList}">
+            <div class="col-sm-6 col-md-12" >
+                <div class="thumbnail">
+                    <img th:src="${title.pic}"/>
+                    <div class="words">
+                        <h3 th:text="${title.name}"/></h3>
+                    </div>
+                    <div class="like">
+                        <button class="btn-danger" th:text="${title.like}"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
